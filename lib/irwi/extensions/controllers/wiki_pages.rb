@@ -136,7 +136,7 @@ module Irwi::Extensions::Controllers::WikiPages
 
   # Initialize @page instance variable
   def setup_page
-    @page = page_class.find_by_path_or_new(URI.unescape(params[:path] || '')) # Find existing page by path or create new
+    @page = page_class.find_by_path_or_new(params[:path] || '') # Find existing page by path or create new
   end
 
   # Method, which called when user tries to visit
