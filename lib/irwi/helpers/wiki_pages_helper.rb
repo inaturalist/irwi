@@ -75,7 +75,7 @@ module Irwi::Helpers::WikiPagesHelper
 
   def wiki_link(title)
     page = Irwi.config.page_class.find_by_title(title)
-    path = page ? page.path : CGI.escape(title)
+    path = page ? page.path : URI::Parser.new.escape(title)
 
     url_for(controller: Irwi.config.controller_name, action: :show, path: path)
   end
