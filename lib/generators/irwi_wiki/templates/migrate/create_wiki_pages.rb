@@ -1,4 +1,4 @@
-class CreateWikiPages < ActiveRecord::Migration
+class CreateWikiPages < ActiveRecord::Migration[5.0]
   def self.up
     create_table :wiki_pages do |t|
       t.integer :creator_id

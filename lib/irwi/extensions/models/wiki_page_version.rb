@@ -2,17 +2,23 @@ module Irwi::Extensions::Models::WikiPageVersion
   extend ActiveSupport::Concern
 
   def next
-    self.class.first conditions: ["id > ? AND page_id = ?", id, page_id], order: 'id ASC'
+    self.class
+      .where("id > ? AND page_id = ?", id, page_id)
+      .order(id: :asc)
+      .first
   end
 
   def previous
-    self.class.first conditions: ["id < ? AND page_id = ?", id, page_id], order: 'id DESC'
+    self.class
+      .where("id < ? AND page_id = ?", id, page_id)
+      .order(id: :desc)
+      .first
   end
 
   private
 
   def raise_on_update
-    raise ActiveRecordError, "Can't modify existing version"
+    raise ActiveRecord::ActiveRecordError, "Can't modify existing version"
   end
 
   included do

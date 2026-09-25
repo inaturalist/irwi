@@ -1,4 +1,4 @@
-class CreateWikiPageAttachments < ActiveRecord::Migration
+class CreateWikiPageAttachments < ActiveRecord::Migration[5.0]
   def self.up
     create_table :wiki_page_attachments do |t|
       t.integer :page_id, null: false # Reference to page
