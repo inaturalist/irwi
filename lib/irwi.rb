@@ -31,17 +31,16 @@ module Irwi
     initializer 'irwi' do
       ActiveSupport.on_load :action_controller_base do
         require 'irwi/extensions/controllers'
-        ActionController::Base.append_view_path File.expand_path('../../app/views', __FILE__) # Append default views
+        ActionController::Base.append_view_path File.expand_path('../../app/views', __FILE__)
       end
+
       ActiveSupport.on_load :active_record do
         require 'irwi/extensions/models'
       end
-    end
-    config.after_initialize do
-      require 'irwi/support/route_mapper' # Routes
     end
   end
 end
 
 require 'irwi/helpers'
 require 'irwi/config'
+require 'irwi/support/route_mapper'
